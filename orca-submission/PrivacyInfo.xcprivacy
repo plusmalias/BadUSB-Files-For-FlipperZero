@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Privacy manifest for ORCA.
+  Required by App Store since 2024. Missing/incomplete manifests cause
+  automated rejection (ITMS-91053 / ITMS-91061) at upload time.
+
+  Adjust the NSPrivacyAccessedAPITypes list to match APIs you actually call.
+  The three below are the ones nearly every app hits. Verify with:
+      grep -rE 'UserDefaults|FileManager|systemUptime|mach_absolute_time|stat\(' <YourSources>
+-->
+<plist version="1.0">
+<dict>
+    <!-- Local-only app: no tracking across apps/sites. -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+
+    <!-- No tracking domains. -->
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!-- No data leaves the device => no collected data types to declare. -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+
+    <!-- Required-reason APIs. Each needs a declared reason code. -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <!-- UserDefaults: app settings/preferences. Reason CA92.1 = access
+             info from same app only. -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+
+        <!-- File timestamp: reading/writing saved scripts and scan logs.
+             Reason C617.1 = inside app container / user-selected files. -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string>
+            </array>
+        </dict>
+
+        <!-- Disk space: checking free space before saving captures.
+             Reason E174.1 = display to user / write files. -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>E174.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>

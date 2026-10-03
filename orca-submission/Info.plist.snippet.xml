@@ -1,0 +1,45 @@
+<!--
+  ORCA — usage-description strings to merge into your target's Info.plist.
+
+  These are MANDATORY for every permission you touch. Without the matching
+  string, the app crashes the instant the permission is requested, and the
+  App Store auto-rejects the binary.
+
+  Keep each string specific and honest: reviewers read them, and vague
+  strings ("needs Bluetooth") are a common rejection reason.
+-->
+
+<!-- Bluetooth: connect to Flipper Zero + BLE Recon scanning. -->
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>ORCA uses Bluetooth to connect to your Flipper Zero and to scan for nearby Bluetooth LE devices in Recon.</string>
+
+<!-- Older key; include it for iOS 12 and earlier if your deployment target
+     goes that low. Harmless to keep. -->
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>ORCA uses Bluetooth to connect to your Flipper Zero and to scan for nearby Bluetooth LE devices in Recon.</string>
+
+<!-- Location: geotagging Wardrive results only. iOS also requires Location
+     permission before any BLE scan will return results. -->
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>ORCA uses your location only while Wardrive is active, to geotag the scan results you choose to save. Location is never used for any other purpose.</string>
+
+<!--
+  ONLY include the "Always" key below if ORCA genuinely scans while
+  backgrounded. If it does not, DELETE this key — declaring background
+  location you don't use is itself a rejection reason.
+-->
+<!--
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>ORCA uses your location in the background only while a Wardrive session is running, to continuously geotag scan results.</string>
+-->
+
+<!--
+  If you enable background BLE at all (central scanning while backgrounded),
+  add the background mode. Otherwise DELETE this block.
+-->
+<!--
+<key>UIBackgroundModes</key>
+<array>
+    <string>bluetooth-central</string>
+</array>
+-->
