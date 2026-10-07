@@ -1,86 +1,73 @@
-# AIWA AWS400G (40" FHD TV) — Flipper Zero IR Remote
+# AIWA AWS400G (40" FHD Android TV) — Flipper Zero IR Remote
 
-Your remote's gone, and your TV is an AIWA Model **AWS400G** (per the rating
-label on the back). Here's the honest technical situation and the actual
-fix.
+Your remote broke and the TV is an AIWA **AWS400G**. The standby light
+flickers when IR is sent at it, which confirms the **IR receiver is alive**
+— so this is purely a matter of sending the right codes, not a hardware
+dead-end.
 
-## Why there's no ready-made file
+## The approach (why these files exist)
 
-I checked the two real sources that would have this:
+There is no published codeset for the AWS400G specifically. But AIWA's
+AU-market TVs are ODM rebadges that share scaler boards — and their
+codesets — with other AU generic brands (GVA at The Good Guys, Bauhn at
+ALDI, Soniq). Those brands' codes are known. They use the Flipper `NECext`
+protocol with power command `1E E1` (the classic generic-scaler power code),
+differing only by **address**. So the only unknown for your TV is which
+address it answers to. These files find that address and give you a working
+remote.
 
-1. **Flipper-IRDB** (the community database of ~3000+ captured `.ir`
-   files, organized by brand) — has no `AIWA` folder under `TVs/` at all.
-   It has a couple of Aiwa audio receivers and CD players, but no TV.
-2. **Flipper's own built-in Universal Remote dictionary** (ships in
-   firmware, no file needed) — covers a few hundred manufacturer code
-   sets, but there's no public listing confirming AIWA is one of them.
+## What to do, in order
 
-AIWA-branded TVs sold in AU/NZ are rebadged ODM sets (the board inside
-almost certainly isn't made by "Aiwa" — the brand is licensed), so there's
-no guarantee it even uses a documented code set. **Any hex codes I typed
-in here would be a guess dressed up as data — they'd very likely be wrong
-and I'm not going to hand you a file that looks real but doesn't work.**
-`AIWA_AWS400G.TEMPLATE.ir` in this folder is a syntactically valid Flipper
-IR file with every signal zeroed out as a placeholder — it's a skeleton,
-not a working remote.
+### 1. Try the best bet first
+Load **`AIWA_AWS400G.ir`** and press **Power**. This is the GVA-family map
+at address `00 7F` — the single most likely match. If the TV turns off/on,
+you're done: Vol, Channel, Mute, Source, arrows, OK, Menu, Exit are all in
+that file.
 
-## The actual fix (10 minutes, no guessing)
+### 2. Try the other two families
+If `AIWA_AWS400G.ir` Power does nothing, try **Power** in:
+- `try_Bauhn_01-72.ir` (address `01 72`, same `1E E1` command)
+- `try_Soniq_72-DD.ir` (address `72 DD`, different command family — full
+  number keys 0–9 included)
 
-Flipper Zero already has a feature built exactly for "TV, no remote,
-unknown brand": **Universal Remote brute-force**.
+If one of these powers the TV, that whole file is your remote.
 
-1. On the Flipper: **Apps → Infrared → Universal Remote → TVs**.
-2. Stand ~2-3 m from the TV, point the Flipper's IR transmitter (top
-   edge) at it.
-3. Press **Power** in the app. It cycles through its whole dictionary of
-   known manufacturer power codes until the TV responds (powers off/on).
-   This can take anywhere from a few seconds to a minute or two — let it
-   run.
-4. Once the TV reacts, the Flipper has found a working protocol/address
-   for your set. The same menu's **Vol+/Vol-/Ch+/Ch-/Mute** buttons will
-   very likely also work immediately, since universal codebooks bundle
-   the whole button set per manufacturer entry, not just power.
+### 3. Run the address sweep
+If none of the three work, load **`AIWA_AWS400G_POWER_discovery.ir`**. It
+holds 52 power signals: the `1E E1` command across many candidate
+addresses, plus plain-NEC, Samsung, and RC5/RC6 long-shots. Point the
+Flipper at the TV and send each signal in turn, watching for the TV to
+actually **power toggle** (not just the standby LED flicker). Go in order;
+it only takes a minute or two.
 
-That gives you working power/volume/channel/mute with zero file editing.
+### 4. Tell me which one worked
+Each signal is named by its protocol/address/command, e.g.
+`NECext_a0472_c1EE1` or `NEC_a04_c08`. Note the name of the signal that
+toggled power and send it back. From that address I can generate the
+**complete** button set (all keys) at the correct address in one clean
+`AIWA_AWS400G.ir`.
 
-## Getting the rest of the buttons (Menu, Source, arrows, OK, Home)
+## Important caveat for this Android TV
 
-The Universal Remote only exposes the basic button set. For the rest, you
-need a real signal source to learn from — the Flipper can't invent these,
-and neither can I. Two options:
-
-- **Any cheap universal remote** (the $8 kind from a supermarket/hardware
-  store) set to the code the brute-force step above found, or run through
-  its own AIWA/TV auto-search. Once it drives your TV, use Flipper's
-  **Infrared → Learn New Remote**, name each button, and point the
-  universal remote at the Flipper to capture each signal. This writes a
-  fully valid `.ir` file automatically — correctly formatted, no manual
-  editing needed.
-- **A phone with a built-in IR blaster** running a universal remote app
-  set to your TV, same process.
-
-Once you've learned real signals, either:
-- let Flipper save its own file and use that directly, or
-- drop the captured `address`/`command` byte pairs into
-  `AIWA_AWS400G.TEMPLATE.ir` in place of the `00 00 00 00` placeholders,
-  then rename it to `AIWA_AWS400G.ir`.
+Because it's an Android/smart set, the original remote was probably
+Bluetooth. The TV panel still takes IR for core functions (that's the
+flicker you saw), so **Power / Volume / Channel / Mute / Source are very
+likely to work over IR**. Full menu navigation (arrows / OK / app launches)
+*may* be Bluetooth-only on some Android sets — if the arrows don't respond
+even once power works, that's the TV limiting IR, not a bad code. Getting
+power and volume back is the primary win here.
 
 ## File format reference
 
-Flipper's parsed IR format (what the template uses):
+Flipper parsed-IR format (what every file here uses):
 
 ```
-Filetype: IR signals file
-Version: 1
-#
 name: Power
 type: parsed
-protocol: NEC
-address: XX 00 00 00
-command: XX 00 00 00
+protocol: NECext
+address: 00 7F 00 00      # 16-bit, least-significant byte first
+command: 1E E1 00 00
 ```
 
-Each `#` line separates one signal block. `protocol` is usually `NEC`,
-`NECext`, `Samsung32`, `RC5`, or `RC6` — whatever Flipper reports after a
-successful Learn is the correct one to use; don't assume NEC if Learn
-reports something else.
+The sibling remote files bundled here are from the community
+[Flipper-IRDB](https://github.com/Lucaslhm/Flipper-IRDB) (CC0-licensed).

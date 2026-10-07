@@ -1,0 +1,314 @@
+Filetype: IR signals file
+Version: 1
+#
+name: NECext_a007F_c1EE1
+type: parsed
+protocol: NECext
+address: 00 7F 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0172_c1EE1
+type: parsed
+protocol: NECext
+address: 01 72 00 00
+command: 1E E1 00 00
+#
+name: NECext_a72DD_c1EE1
+type: parsed
+protocol: NECext
+address: 72 DD 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0000_c1EE1
+type: parsed
+protocol: NECext
+address: 00 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0100_c1EE1
+type: parsed
+protocol: NECext
+address: 01 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0200_c1EE1
+type: parsed
+protocol: NECext
+address: 02 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0400_c1EE1
+type: parsed
+protocol: NECext
+address: 04 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a0800_c1EE1
+type: parsed
+protocol: NECext
+address: 08 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a1000_c1EE1
+type: parsed
+protocol: NECext
+address: 10 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a2000_c1EE1
+type: parsed
+protocol: NECext
+address: 20 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a4000_c1EE1
+type: parsed
+protocol: NECext
+address: 40 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a8000_c1EE1
+type: parsed
+protocol: NECext
+address: 80 00 00 00
+command: 1E E1 00 00
+#
+name: NECext_a00FF_c1EE1
+type: parsed
+protocol: NECext
+address: 00 FF 00 00
+command: 1E E1 00 00
+#
+name: NECext_a04FB_c1EE1
+type: parsed
+protocol: NECext
+address: 04 FB 00 00
+command: 1E E1 00 00
+#
+name: NECext_a40BF_c1EE1
+type: parsed
+protocol: NECext
+address: 40 BF 00 00
+command: 1E E1 00 00
+#
+name: NECext_a20DF_c1EE1
+type: parsed
+protocol: NECext
+address: 20 DF 00 00
+command: 1E E1 00 00
+#
+name: NECext_a807F_c1EE1
+type: parsed
+protocol: NECext
+address: 80 7F 00 00
+command: 1E E1 00 00
+#
+name: NECext_a00BF_c1EE1
+type: parsed
+protocol: NECext
+address: 00 BF 00 00
+command: 1E E1 00 00
+#
+name: NECext_a07F8_c1EE1
+type: parsed
+protocol: NECext
+address: 07 F8 00 00
+command: 1E E1 00 00
+#
+name: NECext_a00EF_c1EE1
+type: parsed
+protocol: NECext
+address: 00 EF 00 00
+command: 1E E1 00 00
+#
+name: NECext_a8679_c1EE1
+type: parsed
+protocol: NECext
+address: 86 79 00 00
+command: 1E E1 00 00
+#
+name: NECext_a4040_c1EE1
+type: parsed
+protocol: NECext
+address: 40 40 00 00
+command: 1E E1 00 00
+#
+name: NEC_a00_c1E
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a01_c1E
+type: parsed
+protocol: NEC
+address: 01 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a02_c1E
+type: parsed
+protocol: NEC
+address: 02 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a04_c1E
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a08_c1E
+type: parsed
+protocol: NEC
+address: 08 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a10_c1E
+type: parsed
+protocol: NEC
+address: 10 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a20_c1E
+type: parsed
+protocol: NEC
+address: 20 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a40_c1E
+type: parsed
+protocol: NEC
+address: 40 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a80_c1E
+type: parsed
+protocol: NEC
+address: 80 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a7F_c1E
+type: parsed
+protocol: NEC
+address: 7F 00 00 00
+command: 1E 00 00 00
+#
+name: NEC_a00_c08
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 08 00 00 00
+#
+name: NEC_a00_c02
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 02 00 00 00
+#
+name: NEC_a00_c12
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 12 00 00 00
+#
+name: NEC_a00_c45
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 45 00 00 00
+#
+name: NEC_a00_c48
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 48 00 00 00
+#
+name: NEC_a00_c0C
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 0C 00 00 00
+#
+name: NEC_a00_c17
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 17 00 00 00
+#
+name: NEC_a00_c40
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 40 00 00 00
+#
+name: NEC_a00_cF8
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: F8 00 00 00
+#
+name: NEC_a00_c10
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 10 00 00 00
+#
+name: NEC_a04_c08
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 08 00 00 00
+#
+name: NEC_a04_c02
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 02 00 00 00
+#
+name: NEC_a04_c12
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 12 00 00 00
+#
+name: NEC_a04_c45
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 45 00 00 00
+#
+name: NEC_a04_c10
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 10 00 00 00
+#
+name: Samsung_a07_c02
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: 02 00 00 00
+#
+name: Samsung_aE0_cE0
+type: parsed
+protocol: Samsung32
+address: E0 00 00 00
+command: E0 00 00 00
+#
+name: RC5_a00_c0C
+type: parsed
+protocol: RC5
+address: 00 00 00 00
+command: 0C 00 00 00
+#
+name: RC5_a00_c0D
+type: parsed
+protocol: RC5
+address: 00 00 00 00
+command: 0D 00 00 00
+#
+name: RC6_a00_c0C
+type: parsed
+protocol: RC6
+address: 00 00 00 00
+command: 0C 00 00 00
