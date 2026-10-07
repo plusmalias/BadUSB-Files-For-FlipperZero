@@ -1,0 +1,452 @@
+Filetype: IR signals file
+Version: 1
+#
+# AIWA AWS400G power-code discovery sweep v2.
+# Every unique TV power code in the Flipper-IRDB, most-common-first.
+# Point the Flipper at the TV and send each in turn; watch for the TV
+# to actually power on/off. Note the winning signal's name and report it.
+#
+#  (in 56 DB files)
+name: NEC_a0400_c0800
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 08 00 00 00
+#  (in 39 DB files)
+name: Samsung32_a0700_c0200
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: 02 00 00 00
+#  (in 27 DB files)
+name: SIRC_a0100_c1500
+type: parsed
+protocol: SIRC
+address: 01 00 00 00
+command: 15 00 00 00
+#  (in 19 DB files)
+name: Kaseikyo_a8002_cD003
+type: parsed
+protocol: Kaseikyo
+address: 80 02 20 00
+command: D0 03 00 00
+#  (in 16 DB files)
+name: RC5_a0100_c0C00
+type: parsed
+protocol: RC5
+address: 01 00 00 00
+command: 0C 00 00 00
+#  (in 15 DB files)
+name: RC5_a0000_c0C00
+type: parsed
+protocol: RC5
+address: 00 00 00 00
+command: 0C 00 00 00
+#  (in 15 DB files)
+name: NECext_a027D_c46B9
+type: parsed
+protocol: NECext
+address: 02 7D 00 00
+command: 46 B9 00 00
+#  (in 13 DB files)
+name: Samsung32_a0700_cE600
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: E6 00 00 00
+#  (in 12 DB files)
+name: NEC_a4000_c1200
+type: parsed
+protocol: NEC
+address: 40 00 00 00
+command: 12 00 00 00
+#  (in 12 DB files)
+name: RC6_a0000_c0C00
+type: parsed
+protocol: RC6
+address: 00 00 00 00
+command: 0C 00 00 00
+#  (in 11 DB files)
+name: RCA_a0F00_c5400
+type: parsed
+protocol: RCA
+address: 0F 00 00 00
+command: 54 00 00 00
+#  (in 10 DB files)
+name: NECext_aEAC7_c17E8
+type: parsed
+protocol: NECext
+address: EA C7 00 00
+command: 17 E8 00 00
+#  (in 8 DB files)
+name: NECext_a8605_c0FF0
+type: parsed
+protocol: NECext
+address: 86 05 00 00
+command: 0F F0 00 00
+#  (in 8 DB files)
+name: NECext_a00BF_c0DF2
+type: parsed
+protocol: NECext
+address: 00 BF 00 00
+command: 0D F2 00 00
+#  (in 5 DB files)
+name: NEC_a2000_c5200
+type: parsed
+protocol: NEC
+address: 20 00 00 00
+command: 52 00 00 00
+#  (in 5 DB files)
+name: NEC_a0100_c1000
+type: parsed
+protocol: NEC
+address: 01 00 00 00
+command: 10 00 00 00
+#  (in 5 DB files)
+name: NECext_a007F_c0AF5
+type: parsed
+protocol: NECext
+address: 00 7F 00 00
+command: 0A F5 00 00
+#  (in 4 DB files)
+name: Samsung32_a0700_c9800
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: 98 00 00 00
+#  (in 4 DB files)
+name: RC5_a0300_c0C00
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0C 00 00 00
+#  (in 4 DB files)
+name: NECext_a007F_c15EA
+type: parsed
+protocol: NECext
+address: 00 7F 00 00
+command: 15 EA 00 00
+#  (in 3 DB files)
+name: NEC_aA000_c5F00
+type: parsed
+protocol: NEC
+address: A0 00 00 00
+command: 5F 00 00 00
+#  (in 3 DB files)
+name: Samsung32_a0E00_c0C00
+type: parsed
+protocol: Samsung32
+address: 0E 00 00 00
+command: 0C 00 00 00
+#  (in 3 DB files)
+name: NECext_a0172_c1EE1
+type: parsed
+protocol: NECext
+address: 01 72 00 00
+command: 1E E1 00 00
+#  (in 3 DB files)
+name: SIRC_a0100_c6D00
+type: parsed
+protocol: SIRC
+address: 01 00 00 00
+command: 6D 00 00 00
+#  (in 3 DB files)
+name: NECext_a007F_c1EE1
+type: parsed
+protocol: NECext
+address: 00 7F 00 00
+command: 1E E1 00 00
+#  (in 3 DB files)
+name: NEC_a3800_c1200
+type: parsed
+protocol: NEC
+address: 38 00 00 00
+command: 12 00 00 00
+#  (in 3 DB files)
+name: NECext_a72DD_c0EF1
+type: parsed
+protocol: NECext
+address: 72 DD 00 00
+command: 0E F1 00 00
+#  (in 3 DB files)
+name: NECext_a84E0_c20DF
+type: parsed
+protocol: NECext
+address: 84 E0 00 00
+command: 20 DF 00 00
+#  (in 2 DB files)
+name: NECext_a6969_c01FE
+type: parsed
+protocol: NECext
+address: 69 69 00 00
+command: 01 FE 00 00
+#  (in 2 DB files)
+name: NEC_a6E00_c0200
+type: parsed
+protocol: NEC
+address: 6E 00 00 00
+command: 02 00 00 00
+#  (in 2 DB files)
+name: NECext_a4040_c0AF5
+type: parsed
+protocol: NECext
+address: 40 40 00 00
+command: 0A F5 00 00
+#  (in 2 DB files)
+name: NEC_a4000_c0B00
+type: parsed
+protocol: NEC
+address: 40 00 00 00
+command: 0B 00 00 00
+#  (in 2 DB files)
+name: NECext_a8722_cE01F
+type: parsed
+protocol: NECext
+address: 87 22 00 00
+command: E0 1F 00 00
+#  (in 2 DB files)
+name: NECext_a00DF_c1CE3
+type: parsed
+protocol: NECext
+address: 00 DF 00 00
+command: 1C E3 00 00
+#  (in 1 DB file)
+name: RCA_a0F00_c5C00
+type: parsed
+protocol: RCA
+address: 0F 00 00 00
+command: 5C 00 00 00
+#  (in 1 DB file)
+name: RCA_a0F00_cDC00
+type: parsed
+protocol: RCA
+address: 0F 00 00 00
+command: DC 00 00 00
+#  (in 1 DB file)
+name: NEC_a0400_c4000
+type: parsed
+protocol: NEC
+address: 04 00 00 00
+command: 40 00 00 00
+#  (in 1 DB file)
+name: NECext_a00BD_c01FE
+type: parsed
+protocol: NECext
+address: 00 BD 00 00
+command: 01 FE 00 00
+#  (in 1 DB file)
+name: NECext_a04F4_c08F7
+type: parsed
+protocol: NECext
+address: 04 F4 00 00
+command: 08 F7 00 00
+#  (in 1 DB file)
+name: NEC_a8000_c1200
+type: parsed
+protocol: NEC
+address: 80 00 00 00
+command: 12 00 00 00
+#  (in 1 DB file)
+name: Samsung32_a0700_cE000
+type: parsed
+protocol: Samsung32
+address: 07 00 00 00
+command: E0 00 00 00
+#  (in 1 DB file)
+name: NEC_a5000_c1200
+type: parsed
+protocol: NEC
+address: 50 00 00 00
+command: 12 00 00 00
+#  (in 1 DB file)
+name: NEC_a5000_c1700
+type: parsed
+protocol: NEC
+address: 50 00 00 00
+command: 17 00 00 00
+#  (in 1 DB file)
+name: NECext_aADED_cB54A
+type: parsed
+protocol: NECext
+address: AD ED 00 00
+command: B5 4A 00 00
+#  (in 1 DB file)
+name: SIRC15_a3000_c1500
+type: parsed
+protocol: SIRC15
+address: 30 00 00 00
+command: 15 00 00 00
+#  (in 1 DB file)
+name: SIRC_a0100_c2E00
+type: parsed
+protocol: SIRC
+address: 01 00 00 00
+command: 2E 00 00 00
+#  (in 1 DB file)
+name: SIRC_a0100_c2F00
+type: parsed
+protocol: SIRC
+address: 01 00 00 00
+command: 2F 00 00 00
+#  (in 1 DB file)
+name: NECext_a72DD_c10EF
+type: parsed
+protocol: NECext
+address: 72 DD 00 00
+command: 10 EF 00 00
+#  (in 1 DB file)
+name: NECext_a00FB_c0AF5
+type: parsed
+protocol: NECext
+address: 00 FB 00 00
+command: 0A F5 00 00
+#  (in 1 DB file)
+name: NECext_a00BF_c03FC
+type: parsed
+protocol: NECext
+address: 00 BF 00 00
+command: 03 FC 00 00
+#  (in 1 DB file)
+name: Pioneer_aAA00_c1C00
+type: parsed
+protocol: Pioneer
+address: AA 00 00 00
+command: 1C 00 00 00
+#  (in 1 DB file)
+name: NECext_a00BF_c00FF
+type: parsed
+protocol: NECext
+address: 00 BF 00 00
+command: 00 FF 00 00
+#  (in 1 DB file)
+name: NECext_a00F7_c0CF3
+type: parsed
+protocol: NECext
+address: 00 F7 00 00
+command: 0C F3 00 00
+#  (in 1 DB file)
+name: NEC_a0100_c1C00
+type: parsed
+protocol: NEC
+address: 01 00 00 00
+command: 1C 00 00 00
+#  (in 1 DB file)
+name: NEC_aA000_c1C00
+type: parsed
+protocol: NEC
+address: A0 00 00 00
+command: 1C 00 00 00
+#  (in 1 DB file)
+name: NEC_a2800_c0B00
+type: parsed
+protocol: NEC
+address: 28 00 00 00
+command: 0B 00 00 00
+#  (in 1 DB file)
+name: NECext_a6446_c5DA2
+type: parsed
+protocol: NECext
+address: 64 46 00 00
+command: 5D A2 00 00
+#  (in 1 DB file)
+name: NECext_a6446_c01FE
+type: parsed
+protocol: NECext
+address: 64 46 00 00
+command: 01 FE 00 00
+#  (in 1 DB file)
+name: NECext_aEAC7_c9768
+type: parsed
+protocol: NECext
+address: EA C7 00 00
+command: 97 68 00 00
+#  (in 1 DB file)
+name: Samsung32_a1700_c1400
+type: parsed
+protocol: Samsung32
+address: 17 00 00 00
+command: 14 00 00 00
+#  (in 1 DB file)
+name: NEC_a0100_c4000
+type: parsed
+protocol: NEC
+address: 01 00 00 00
+command: 40 00 00 00
+#  (in 1 DB file)
+name: NEC_a1900_c1800
+type: parsed
+protocol: NEC
+address: 19 00 00 00
+command: 18 00 00 00
+#  (in 1 DB file)
+name: NEC_a3800_c0100
+type: parsed
+protocol: NEC
+address: 38 00 00 00
+command: 01 00 00 00
+#  (in 1 DB file)
+name: NECext_aA0B7_cE916
+type: parsed
+protocol: NECext
+address: A0 B7 00 00
+command: E9 16 00 00
+#  (in 1 DB file)
+name: NEC_a0000_c1A00
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 1A 00 00 00
+#  (in 1 DB file)
+name: NEC_a0000_c1C00
+type: parsed
+protocol: NEC
+address: 00 00 00 00
+command: 1C 00 00 00
+#  (in 1 DB file)
+name: NECext_a837A_c0800
+type: parsed
+protocol: NECext
+address: 83 7A 00 00
+command: 08 00 00 00
+#  (in 1 DB file)
+name: Kaseikyo_aB002_cD003
+type: parsed
+protocol: Kaseikyo
+address: B0 02 20 00
+command: D0 03 00 00
+#  (in 1 DB file)
+name: Samsung32_a3E00_c0C00
+type: parsed
+protocol: Samsung32
+address: 3E 00 00 00
+command: 0C 00 00 00
+#  (in 1 DB file)
+name: NEC_a0800_cD700
+type: parsed
+protocol: NEC
+address: 08 00 00 00
+command: D7 00 00 00
+#  (in 1 DB file)
+name: NEC_a8000_c8200
+type: parsed
+protocol: NEC
+address: 80 00 00 00
+command: 82 00 00 00
+#  (in 1 DB file)
+name: NECext_a04B9_c00FF
+type: parsed
+protocol: NECext
+address: 04 B9 00 00
+command: 00 FF 00 00
+#  (in 1 DB file)
+name: NECext_a013E_c0AF5
+type: parsed
+protocol: NECext
+address: 01 3E 00 00
+command: 0A F5 00 00
+#  (in 1 DB file)
+name: NECext_a857C_c807F
+type: parsed
+protocol: NECext
+address: 85 7C 00 00
+command: 80 7F 00 00

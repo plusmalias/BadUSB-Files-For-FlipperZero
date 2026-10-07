@@ -1,73 +1,81 @@
-# AIWA AWS400G (40" FHD Android TV) — Flipper Zero IR Remote
+# AIWA AWS400G (40" FHD Google TV) — Flipper Zero IR Remote
 
-Your remote broke and the TV is an AIWA **AWS400G**. The standby light
-flickers when IR is sent at it, which confirms the **IR receiver is alive**
-— so this is purely a matter of sending the right codes, not a hardware
-dead-end.
+Your remote broke. The TV is an AIWA **AWS400G** — a **Google TV** on an
+**MSD9216 (MStar/MediaTek)** chassis. There's no published IR codeset for
+this exact model anywhere, so this is a search problem: send real-world TV
+power codes until one toggles the set, then build the full remote around it.
 
-## The approach (why these files exist)
+## Status / what's been ruled out
 
-There is no published codeset for the AWS400G specifically. But AIWA's
-AU-market TVs are ODM rebadges that share scaler boards — and their
-codesets — with other AU generic brands (GVA at The Good Guys, Bauhn at
-ALDI, Soniq). Those brands' codes are known. They use the Flipper `NECext`
-protocol with power command `1E E1` (the classic generic-scaler power code),
-differing only by **address**. So the only unknown for your TV is which
-address it answers to. These files find that address and give you a working
-remote.
+- The Flipper's IR transmitter is **known-good** (it controls other devices).
+- The first guess — a `NECext 1E E1` generic-scaler codeset (GVA/Bauhn/Soniq
+  family) — and a 52-code hand-picked sweep **all failed**. That set turned
+  out to be missing most common TV protocols.
+- So the real code is simply a protocol/address this TV uses that wasn't in
+  that first net.
 
-## What to do, in order
+## START HERE: `AIWA_AWS400G_POWER_discovery_v2.ir`
 
-### 1. Try the best bet first
-Load **`AIWA_AWS400G.ir`** and press **Power**. This is the GVA-family map
-at address `00 7F` — the single most likely match. If the TV turns off/on,
-you're done: Vol, Channel, Mute, Source, arrows, OK, Menu, Exit are all in
-that file.
+This is the real tool. It contains **every unique TV power code in the entire
+Flipper-IRDB (74 of them)** — NEC, NECext, Samsung, Sony (SIRC), Panasonic
+(Kaseikyo), RCA, RC5, RC6, Pioneer — **ordered most-common-first**. The most
+common single TV power code (NEC `04/08`, used by 56 different TVs) is signal
+#1.
 
-### 2. Try the other two families
-If `AIWA_AWS400G.ir` Power does nothing, try **Power** in:
-- `try_Bauhn_01-72.ir` (address `01 72`, same `1E E1` command)
-- `try_Soniq_72-DD.ir` (address `72 DD`, different command family — full
-  number keys 0–9 included)
+1. Load `AIWA_AWS400G_POWER_discovery_v2.ir` on the Flipper
+   (Infrared → Saved Remotes).
+2. Point it at the TV from ~1–2 m, direct line of sight.
+3. Send each signal **in order from the top**, pausing ~1 s on each, watching
+   for the TV to actually **power on/off** (not just a standby-LED blink).
+4. When one toggles the TV, **note its name** — e.g. `SIRC_a0100_c1500` or
+   `NECext_a027D_c46B9` — and send it back to me.
 
-If one of these powers the TV, that whole file is your remote.
+From that one winning signal I know the exact protocol + address, and I'll
+generate a complete `AIWA_AWS400G.ir` with every button (Power, Vol, Ch,
+Mute, Source, D-pad, OK, Menu, Back) on that codeset.
 
-### 3. Run the address sweep
-If none of the three work, load **`AIWA_AWS400G_POWER_discovery.ir`**. It
-holds 52 power signals: the `1E E1` command across many candidate
-addresses, plus plain-NEC, Samsung, and RC5/RC6 long-shots. Point the
-Flipper at the TV and send each signal in turn, watching for the TV to
-actually **power toggle** (not just the standby LED flicker). Go in order;
-it only takes a minute or two.
+## Faster option (custom firmware only)
 
-### 4. Tell me which one worked
-Each signal is named by its protocol/address/command, e.g.
-`NECext_a0472_c1EE1` or `NEC_a04_c08`. Note the name of the signal that
-toggled power and send it back. From that address I can generate the
-**complete** button set (all keys) at the correct address in one clean
-`AIWA_AWS400G.ir`.
+If your Flipper runs **Unleashed / RogueMaster / Momentum**, these 74 codes
+can instead be loaded as a universal TV asset so a single **Power** press
+auto-sweeps them all hands-free. Tell me if you're on custom firmware and I'll
+package it that way.
 
-## Important caveat for this Android TV
+## The other files (first-round attempts — lower priority)
 
-Because it's an Android/smart set, the original remote was probably
-Bluetooth. The TV panel still takes IR for core functions (that's the
-flicker you saw), so **Power / Volume / Channel / Mute / Source are very
-likely to work over IR**. Full menu navigation (arrows / OK / app launches)
-*may* be Bluetooth-only on some Android sets — if the arrows don't respond
-even once power works, that's the TV limiting IR, not a bad code. Getting
-power and volume back is the primary win here.
+- `AIWA_AWS400G.ir`, `try_Bauhn_01-72.ir`, `try_Soniq_72-DD.ir`,
+  `AIWA_AWS400G_POWER_discovery.ir` — the original `1E E1`-family attempts.
+  Already tested, didn't work. Kept only for reference; the v2 sweep
+  supersedes them.
+
+## Honest fallback
+
+If you cycle all 74 codes and **none** toggles the TV, then this board's
+codeset isn't in any public database — no `.ir` file can be built for it
+without capturing from a working remote. In that case the guaranteed fix is
+a **~AU$30 non-Bluetooth generic IR replacement remote** sold for the
+AWS400G / AWS500G / AWC320G (e.g. RemoteOz, AU eBay). That remote *is* the
+exact codeset, physically. It won't do voice/Google-Assistant, but it does
+Power, Volume, Channel, Source, and the D-pad over IR.
+
+## One caveat about the D-pad
+
+This is a Google TV, so the original remote was IR **+ Bluetooth**. Power and
+Volume are almost certainly IR. The **D-pad / OK may be Bluetooth-only** on
+the panel — if, once power works, the arrows don't respond to any code,
+that's the TV limiting IR for navigation, not a bad code.
 
 ## File format reference
 
-Flipper parsed-IR format (what every file here uses):
-
+Flipper parsed-IR format; `address`/`command` are 4 bytes, least-significant
+byte first:
 ```
 name: Power
 type: parsed
-protocol: NECext
-address: 00 7F 00 00      # 16-bit, least-significant byte first
-command: 1E E1 00 00
+protocol: NEC
+address: 04 00 00 00
+command: 08 00 00 00
 ```
 
-The sibling remote files bundled here are from the community
-[Flipper-IRDB](https://github.com/Lucaslhm/Flipper-IRDB) (CC0-licensed).
+Sibling/source `.ir` data is from the CC0-licensed
+[Flipper-IRDB](https://github.com/Lucaslhm/Flipper-IRDB).
